@@ -4,10 +4,15 @@ abstract class ThemeMain {
   static final myThemeLight = ThemeData(
     fontFamily: 'FiraCode',
     textTheme: const TextTheme(
-        bodyMedium: TextStyle(color: Color.fromARGB(245, 30, 33, 40))),
-    scaffoldBackgroundColor: const Color.fromARGB(245, 230, 233, 240),
+      bodyMedium: TextStyle(
+        color: Color.fromARGB(255, 30, 33, 40),
+      ),
+    ),
+    cardColor: const Color.fromARGB(255, 240, 243, 250),
+    scaffoldBackgroundColor: const Color.fromARGB(255, 223, 226, 233),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: Color.fromARGB(245, 230, 233, 240),
+      elevation: 0,
+      backgroundColor: Color.fromARGB(255, 240, 243, 250),
       selectedItemColor: Color.fromARGB(255, 34, 129, 206),
       unselectedItemColor: Color(0xff52525e),
       selectedIconTheme: IconThemeData(size: 25),
@@ -18,12 +23,17 @@ abstract class ThemeMain {
     ),
   );
   static final myThemeDart = ThemeData(
-    fontFamily: 'FiraCode', // FiraCode , JetBrainsMono
+    fontFamily: 'Roboto', // FiraCode , JetBrainsMono
     textTheme: const TextTheme(
-        bodyMedium: TextStyle(color: Color.fromARGB(245, 230, 233, 240))),
-    scaffoldBackgroundColor: const Color.fromARGB(245, 30, 33, 40),
+      bodyMedium: TextStyle(
+        color: Color.fromARGB(255, 230, 233, 240),
+        fontWeight: FontWeight.w100,
+      ),
+    ),
+    cardColor: const Color.fromARGB(255, 40, 43, 50),
+    scaffoldBackgroundColor: const Color.fromARGB(255, 23, 26, 33),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      backgroundColor: Color.fromARGB(245, 30, 33, 40),
+      backgroundColor: Color.fromARGB(255, 40, 43, 50),
       selectedItemColor: Color.fromARGB(255, 24, 119, 196),
       unselectedItemColor: Color(0xff52525e),
       selectedIconTheme: IconThemeData(size: 25),
