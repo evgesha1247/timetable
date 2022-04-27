@@ -6,11 +6,12 @@ abstract class MainNavigationRouteName {
 }
 
 class MainNavigation {
-  final initialRoute = MainNavigationRouteName.main;
   final _widgetFactory = ScreensFactory();
+  final initialRoute = MainNavigationRouteName.main;
+
   Map<String, WidgetBuilder> get routes => <String, WidgetBuilder>{
-        MainNavigationRouteName.main: (context) =>
-            _widgetFactory.makeTimetableWidget(),
+        MainNavigationRouteName.main: (_) =>
+            _widgetFactory.makeTimetableWidget()
       };
   Route<Object>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {

@@ -4,11 +4,11 @@ import 'package:timetable/ui/themes/theme_main.dart';
 
 class MyAppWidget extends StatelessWidget {
   const MyAppWidget({Key? key}) : super(key: key);
-  static final mainNavigation = MainNavigation();
   @override
   Widget build(BuildContext context) {
+    final mainNavigation = MainNavigation();
     return MaterialApp(
-      theme: ThemeMain.myThemeDart,
+      theme: ThemeMain.myThemeLight,
       routes: mainNavigation.routes,
       initialRoute: mainNavigation.initialRoute,
       onGenerateRoute: mainNavigation.onGenerateRoute,

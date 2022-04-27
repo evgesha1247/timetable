@@ -14,7 +14,7 @@ class _TimetableRowCurrentWidget extends TimetableRowWidget {
   Widget build(BuildContext context) {
     return Row(
       children: const [
-        TimetableRowLessonWidget(),
+        Expanded(child: TimetableRowLessonWidget()),
       ],
     );
   }

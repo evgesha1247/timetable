@@ -33,27 +33,28 @@ class _SliverdelegateAppBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-      child: ColoredBox(
-        color: Theme.of(context).scaffoldBackgroundColor,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Flexible(
+      child: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Flexible(
+              child: SizedBox(
                 child: Text(
                   '«Донской государственный технический университет» Технологический институт (филиал) в г.Азове',
+                  softWrap: true,
+                  maxLines: 4,
                   style: TextStyle(fontSize: 16),
                 ),
               ),
-              Image.asset(
-                'assets/images/atidstu_logo.gif',
-                height: 100,
-                width: 100,
-                fit: BoxFit.cover,
-              ),
-            ],
-          ),
+            ),
+            Image.asset(
+              'assets/images/atidstu_logo.gif',
+              height: 80,
+              width: 80,
+              fit: BoxFit.cover,
+            ),
+          ],
         ),
       ),
     );
