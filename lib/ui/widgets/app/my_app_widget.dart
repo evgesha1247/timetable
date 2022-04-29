@@ -8,7 +8,7 @@ class MyAppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final mainNavigation = MainNavigation();
     return MaterialApp(
-      theme: ThemeMain.myThemeLight,
+      theme: ThemeMain.myThemeDart,
       routes: mainNavigation.routes,
       initialRoute: mainNavigation.initialRoute,
       onGenerateRoute: mainNavigation.onGenerateRoute,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:timetable/Constants/constants.dart';
 import 'package:timetable/ui/widgets/timetable_row/timetable_row_widget.dart';
 
 class TimetableWidget extends StatelessWidget {
@@ -14,13 +13,14 @@ class TimetableWidget extends StatelessWidget {
           delegate: _SliverdelegateAppBarButtonWidget(),
         ),
         SliverList(
-          delegate: SliverChildListDelegate(
-            [
-              TimetableRowWidget.current(),
-              TimetableRowWidget.current(),
-              TimetableRowWidget.current(),
-              TimetableRowWidget.current(),
-            ],
+          delegate: SliverChildBuilderDelegate(
+            childCount: 4,
+            (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.only(top: 16, left: 20, right: 20),
+                child: TimetableRowWidget.current(),
+              );
+            },
           ),
         ),
       ],
@@ -93,7 +93,7 @@ class _SectionButtonWidget extends StatelessWidget {
     return ColoredBox(
       color: Theme.of(context).scaffoldBackgroundColor,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: indent),
+        padding: const EdgeInsets.symmetric(horizontal: 20.00),
         scrollDirection: Axis.horizontal,
         itemCount: dayWeeks.length,
         itemBuilder: (BuildContext context, int index) => Center(

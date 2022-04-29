@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:timetable/Constants/constants.dart';
 import 'package:timetable/ui/widgets/example/example_model.dart';
 
 class Example extends StatelessWidget {
@@ -38,7 +37,7 @@ class _PostsWidget extends StatelessWidget {
     ExampleWidgetModel model = context.watch<ExampleWidgetModel>();
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: indent),
+        padding: const EdgeInsets.symmetric(horizontal: 20.00),
         child: ListView.builder(
           itemCount: model.posts.length,
           itemBuilder: (context, index) {
@@ -56,6 +55,7 @@ class _PostCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final posts = context.watch<ExampleWidgetModel>().posts;
+    const indent = 20.00;
     return Container(
       padding: const EdgeInsets.all(indent),
       margin: index == 0
