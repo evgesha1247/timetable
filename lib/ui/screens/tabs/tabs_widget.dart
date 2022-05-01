@@ -23,8 +23,8 @@ class _TabsBodyWidget extends StatelessWidget {
       index: currentIndexTab,
       children: const [
         TimetableWidget(),
-        Text('2'),
-        Text('4'),
+        Text(''),
+        Text(''),
       ],
     );
   }
@@ -39,23 +39,14 @@ class _BottomNavigationBarWidget extends StatelessWidget {
     return BottomNavigationBar(
       currentIndex: currentIndexTab,
       onTap: model.setCurrentIndexTab,
-      items: const <BottomNavigationBarItem>[
-        BottomNavigationBarItem(
-          icon: Icon(Icons.calendar_month_outlined),
-          label: 'timetable',
-          tooltip: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.school),
-          label: 'less',
-          tooltip: '',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.map_outlined),
-          label: 'map',
-          tooltip: '',
-        ),
+      items: <BottomNavigationBarItem>[
+        _btItem(icon: const Icon(Icons.calendar_month), label: 'timetable'),
+        _btItem(icon: const Icon(Icons.school), label: 'less'),
+        _btItem(icon: const Icon(Icons.map_outlined), label: 'map'),
       ],
     );
   }
 }
+
+_btItem({required icon, required label}) =>
+    BottomNavigationBarItem(icon: icon, label: label, tooltip: '');

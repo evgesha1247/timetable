@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timetable/themes/theme_main.dart';
 import 'package:timetable/ui/widgets/timetable_row/timetable_row_widget.dart';
 
 class TimetableRowLessonWidget extends StatelessWidget {
@@ -14,15 +15,13 @@ class TimetableRowLessonWidget extends StatelessWidget {
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: data._style.widgetColorBk,
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20.0),
-        ),
-        boxShadow: [
+        borderRadius: const BorderRadius.all(Radius.circular(20.0)),
+        boxShadow: const [
           BoxShadow(
-            color: const Color.fromARGB(255, 21, 21, 21).withOpacity(0.3),
-            spreadRadius: 1,
-            blurRadius: 2,
-            offset: const Offset(.5, 2), // changes position of shadow
+            color: ConstantColors.shadow,
+            spreadRadius: 2,
+            blurRadius: 3,
+            offset: Offset(1, 2),
           ),
         ],
       ),
@@ -41,6 +40,20 @@ class TimetableRowLessonWidget extends StatelessWidget {
           _LessonClassRoomWidget(data: data),
         ],
       ),
+    );
+  }
+}
+
+class _LessonNameWidget extends StatelessWidget {
+  const _LessonNameWidget({Key? key, required this.data}) : super(key: key);
+  final TimetableRowLessonWidgetData data;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      data.lessonName,
+      style: ConstantTextStyle.lessonName
+          .copyWith(color: data._style.textNameColor),
+      maxLines: 3,
     );
   }
 }
@@ -66,33 +79,12 @@ class _SpeakerWidget extends StatelessWidget {
         Expanded(
           child: Text(
             data.speakerName,
-            style: TextStyle(
-              color: data._style.speakerNameColor,
-              fontSize: 14,
-              fontWeight: FontWeight.w200,
-              overflow: TextOverflow.ellipsis,
-            ),
+            style: ConstantTextStyle.speakerName
+                .copyWith(color: data._style.textNameColor),
             maxLines: 2,
           ),
         ),
       ],
-    );
-  }
-}
-
-class _LessonNameWidget extends StatelessWidget {
-  const _LessonNameWidget({Key? key, required this.data}) : super(key: key);
-  final TimetableRowLessonWidgetData data;
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      data.lessonName,
-      style: TextStyle(
-        color: data._style.lessonNameColor,
-        fontSize: 18,
-        height: 1.2,
-        fontWeight: FontWeight.w500,
-      ),
     );
   }
 }
@@ -106,10 +98,9 @@ class _LessonClassRoomWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(left: 10),
       child: Text(
-        '213',
-        style: TextStyle(
-          color: data._style.lessonNameColor,
-        ),
+        data.cabinet.toString(),
+        style: ConstantTextStyle.lessonRoom
+            .copyWith(color: data._style.textNameColor),
       ),
     );
   }
@@ -117,12 +108,11 @@ class _LessonClassRoomWidget extends StatelessWidget {
 
 class _TimetableRowLessonWidgetDataStyle {
   final Color widgetColorBk;
-  final Color speakerNameColor;
-  final Color lessonNameColor;
+  final Color textNameColor;
+
   const _TimetableRowLessonWidgetDataStyle({
     required this.widgetColorBk,
-    required this.speakerNameColor,
-    required this.lessonNameColor,
+    required this.textNameColor,
   });
 }
 
@@ -130,13 +120,14 @@ class TimetableRowLessonWidgetData {
   final String avatarURl;
   final String speakerName;
   final String lessonName;
+  final int cabinet;
   final TimetableRowWidgetDataProgressStatus status;
   _TimetableRowLessonWidgetDataStyle get _style {
     switch (status) {
       case TimetableRowWidgetDataProgressStatus.oncoming:
         return oncomingStyle;
       case TimetableRowWidgetDataProgressStatus.current:
-        return oncomingStyle;
+        return currentStyle;
       case TimetableRowWidgetDataProgressStatus.past:
         return pastStyle;
     }
@@ -147,17 +138,19 @@ class TimetableRowLessonWidgetData {
     required this.lessonName,
     required this.speakerName,
     required this.status,
+    required this.cabinet,
   });
 
   static const oncomingStyle = _TimetableRowLessonWidgetDataStyle(
-    lessonNameColor: Color.fromARGB(255, 230, 233, 240),
-    speakerNameColor: Color.fromARGB(255, 160, 163, 170),
-    widgetColorBk: Color.fromARGB(255, 40, 43, 50),
+    textNameColor: ConstantColors.oncoming,
+    widgetColorBk: ConstantColors.container,
   );
-
+  static const currentStyle = _TimetableRowLessonWidgetDataStyle(
+    textNameColor: ConstantColors.current,
+    widgetColorBk: ConstantColors.container,
+  );
   static const pastStyle = _TimetableRowLessonWidgetDataStyle(
-    lessonNameColor: Color.fromARGB(150, 230, 233, 240),
-    speakerNameColor: Color.fromARGB(150, 160, 163, 170),
-    widgetColorBk: Color.fromARGB(150, 40, 43, 50),
+    textNameColor: ConstantColors.past,
+    widgetColorBk: ConstantColors.container,
   );
 }

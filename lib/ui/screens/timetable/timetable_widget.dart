@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:timetable/themes/theme_main.dart';
 import 'package:timetable/ui/widgets/timetable_row/timetable_row_widget.dart';
 
 class TimetableWidget extends StatelessWidget {
@@ -39,13 +40,11 @@ class _SliverdelegateAppBarWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Flexible(
-              child: SizedBox(
-                child: Text(
-                  '«Донской государственный технический университет» Технологический институт (филиал) в г.Азове',
-                  softWrap: true,
-                  maxLines: 4,
-                  style: TextStyle(fontSize: 16),
-                ),
+              child: Text(
+                '«Донской государственный технический университет» Технологический институт (филиал) в г.Азове',
+                style: ConstantTextStyle.appBar,
+                softWrap: true,
+                maxLines: 4,
               ),
             ),
             Image.asset(
@@ -91,32 +90,25 @@ class _SectionButtonWidget extends StatelessWidget {
       ' воскресенье ',
     ];
     return ColoredBox(
-      color: Theme.of(context).scaffoldBackgroundColor,
+      color: ConstantColors.scaffold,
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 20.00),
         scrollDirection: Axis.horizontal,
         itemCount: dayWeeks.length,
         itemBuilder: (BuildContext context, int index) => Center(
-          child: Center(
-            child: SizedBox(
-              height: 36,
-              child: ElevatedButton(
-                style: ButtonStyle(
-                  elevation: MaterialStateProperty.all(0),
-                  minimumSize: MaterialStateProperty.all(Size.zero),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(18),
-                    ),
-                  ),
-                ),
-                onPressed: () {},
-                child: Text(dayWeeks[index]),
+          child: SizedBox(
+            height: 32,
+            child: ElevatedButton(
+              style: ConstantStyle.buttonStyle,
+              onPressed: () {},
+              child: Text(
+                dayWeeks[index],
+                style: ConstantTextStyle.elevatedButtonText,
               ),
             ),
           ),
         ),
-        separatorBuilder: (context, index) => const SizedBox(width: 10),
+        separatorBuilder: (context, index) => const SizedBox(width: 12),
       ),
     );
   }

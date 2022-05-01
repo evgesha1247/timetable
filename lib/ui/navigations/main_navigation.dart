@@ -8,9 +8,8 @@ abstract class MainNavigationRouteName {
 class MainNavigation {
   final _widgetFactory = ScreensFactory();
   final initialRoute = MainNavigationRouteName.main;
-
   Map<String, WidgetBuilder> get routes => <String, WidgetBuilder>{
-        MainNavigationRouteName.main: (_) =>
+        MainNavigationRouteName.main: (context) =>
             _widgetFactory.makeTimetableWidget()
       };
   Route<Object>? onGenerateRoute(RouteSettings settings) {
