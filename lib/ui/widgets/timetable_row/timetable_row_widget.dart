@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:timetable/ui/widgets/timetable_row/timetable_row_lesson_widget.dart';
 import 'package:timetable/ui/widgets/timetable_row/timetable_row_time_widget.dart';
 
-abstract class TimetableRowWidget extends StatelessWidget {
-  const TimetableRowWidget({Key? key}) : super(key: key);
-  factory TimetableRowWidget.current({Key? key}) =>
-      _TimetableRowCurrentWidget(key: key);
+abstract class TimetableRowStyleWidget extends StatelessWidget {
+  const TimetableRowStyleWidget({Key? key}) : super(key: key);
+  factory TimetableRowStyleWidget.current({Key? key}) =>
+      _TimetableRowStyleWidget(key: key);
 }
 
-class _TimetableRowCurrentWidget extends TimetableRowWidget {
-  const _TimetableRowCurrentWidget({Key? key}) : super(key: key);
+enum TimetableRowWidgetDataProgressStatus { oncoming, current, past }
+
+class _TimetableRowStyleWidget extends TimetableRowStyleWidget {
+  const _TimetableRowStyleWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     const progresStatus = TimetableRowWidgetDataProgressStatus.current;
+
     const lessonData = TimetableRowLessonWidgetData(
       avatarURl:
           'https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745',
@@ -32,11 +35,11 @@ class _TimetableRowCurrentWidget extends TimetableRowWidget {
         children: const [
           TimetableRowTimeWidget(data: timeData),
           SizedBox(width: 16),
-          Expanded(child: TimetableRowLessonWidget(data: lessonData)),
+          Expanded(
+            child: TimetableRowLessonWidget(data: lessonData),
+          ),
         ],
       ),
     );
   }
 }
-
-enum TimetableRowWidgetDataProgressStatus { oncoming, current, past }

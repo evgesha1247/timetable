@@ -11,44 +11,41 @@ class TimetableRowTimeWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 48,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Column(
-            children: [
-              Text(
-                data.endTime,
-                style: ConstantTextStyle.timeText
-                    .copyWith(color: data._style.startColor),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Column(
+          children: [
+            Text(
+              data.endTime,
+              style: ConstantTextStyle.timeText
+                  .copyWith(color: data._style.startColor),
+            ),
+            const Spacer(),
+            Text(
+              data.startTime,
+              style: ConstantTextStyle.timeText
+                  .copyWith(color: data._style.endColor),
+            ),
+          ],
+        ),
+        const SizedBox(width: 10),
+        Column(
+          children: [
+            Expanded(
+              child: _DeviderWidget(
+                  color: data._style.startColor,
+                  position: _DeviderWidgetPosition.top),
+            ),
+            Expanded(
+              child: _DeviderWidget(
+                color: data._style.endColor,
+                position: _DeviderWidgetPosition.bottom,
               ),
-              const Spacer(),
-              Text(
-                data.startTime,
-                style: ConstantTextStyle.timeText
-                    .copyWith(color: data._style.endColor),
-              ),
-            ],
-          ),
-          const SizedBox(width: 10),
-          Column(
-            children: [
-              Expanded(
-                child: _DeviderWidget(
-                    color: data._style.startColor,
-                    position: _DeviderWidgetPosition.top),
-              ),
-              Expanded(
-                child: _DeviderWidget(
-                  color: data._style.endColor,
-                  position: _DeviderWidgetPosition.bottom,
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
+            ),
+          ],
+        )
+      ],
     );
   }
 }
