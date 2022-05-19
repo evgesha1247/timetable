@@ -10,11 +10,18 @@ class TimetableWidget extends StatelessWidget {
         slivers: [
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: 2,
-              (BuildContext context, int index) => Padding(
-                padding: const EdgeInsets.only(top: 16, left: 20, right: 20),
-                child: TimetableRowStyleWidget.current(),
-              ),
+              childCount: 3,
+              (BuildContext context, int index) {
+                if (index == 2) {
+                  return TimetableRowStyleWidget.divided(
+                    isBreak: true,
+                  );
+                }
+
+                return TimetableRowStyleWidget.divided(
+                  isBreak: false,
+                );
+              },
             ),
           ),
         ],
