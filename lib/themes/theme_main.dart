@@ -70,7 +70,7 @@ abstract class ThemeMain {
     fontFamily: 'Roboto', // FiraCode , JetBrainsMono , Roboto
 
     cardColor: ConstantColors.container,
-    scaffoldBackgroundColor: ConstantColors.scaffold,
+    // scaffoldBackgroundColor: ConstantColors.scaffold,
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       elevation: 0,
       backgroundColor: ConstantColors.container,
