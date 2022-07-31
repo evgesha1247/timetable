@@ -1,4 +1,4 @@
-package com.example.timetable
+package com.example.text
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,11 +1,11 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:timetable/ui/screens/tabs/tabs_model.dart';
-import 'package:timetable/ui/screens/tabs/tabs_widget.dart';
+import '../home_screen/home_model_widget.dart';
+import '../home_screen/home_screen_widget.dart';
 
 class ScreensFactory {
-  Widget makeTimetableWidget() => ChangeNotifierProvider(
-        create: (context) => TabsModel(),
-        child: const TabsWidget(),
+  Widget makeHomeWidget() => ChangeNotifierProvider(
+        create: (context) => HomeModelWidget(),
+        child: const HomeScreenWidget(),
       );
 }
